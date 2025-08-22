@@ -7,7 +7,7 @@ A Power BI project analyzing Adventure Works sales data to uncover revenue trend
 
 [Adventure_Works_Bikes_Project_Analysis](Adventure_Works_Bikes_Project_Analysis.pbix)
 
-<img src="screenshots/AdventureWorks_Logo.png" class="img-fluid">
+<img src="screenshots/AdventureWorks_Logo.png" class="img-fluid" width="1250" height="625">
 
 ---
 
