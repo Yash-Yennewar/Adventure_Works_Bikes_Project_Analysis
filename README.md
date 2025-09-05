@@ -30,7 +30,7 @@ The dashboard highlights key KPIs, interactive filters, and visual storytelling 
 - Set proper **1:* relationships**  
 - Created a **Measure Table** for KPIs  
 
-📸 **Data Model Screenshot:**  
+## 📸 Data Model Screenshot : 
 <img src="screenshots/Datamodel.png" class="img-fluid">  
 
 ---
