@@ -18,13 +18,57 @@ The dashboard highlights key KPIs, interactive filters, and visual storytelling 
 ---
 
 ## 🛠️ Skills & Tools :
-- Power Query – Data cleaning & preparation.
-- Data Modeling & DAX (KPIs, measures).
-- Interactive Visualizations (charts, slicers, drill-through).
-- Business Intelligence Reporting
+### 🔹 Data Preparation (Power Query)  
+- **Sales Tables** → Appended 2020–2022 data into **SALES_FINAL**  
+- **Product & Customer** → Added flags (`Is_Parent?`), segments (`Income_Level`, `Age_Group`), fixed data types.
+- **Calendar** → Derived Month, Day, Quarter for time intelligence.
 
 ---
 
+### 🔹 Data Modeling  
+- Built **star schema** with **SALES_FINAL** as fact table + dimension lookups  
+- Set proper **1:* relationships**  
+- Created a **Measure Table** for KPIs  
+
+📸 **Data Model Screenshot:**  
+<img src="screenshots/Datamodel.png" class="img-fluid">  
+
+---
+
+### DAX (Data Analysis Expressions)  
+Defined key business measures using DAX : 
+```
+DAX
+Revenue = SUMX(Sales_Final,Sales_Final[OrderQuantity]*RELATED('Product Lookup'[ProductPrice]))
+Total_Cost = SUMX(Sales_Final,Sales_Final[OrderQuantity]*RELATED('Product Lookup'[ProductCost]))
+Profit_Margin = [Revenue] - [Total_Cost]
+```
+
+**Functions Used in Measures** :
+
+- **SUMX** → For row-by-row calculations of Revenue and Cost.  
+- **RELATED** → To fetch product details like price and cost from dimension tables.  
+- **COUNTROWS** → To calculate total number of orders.  
+- **DIVIDE** → For safe division while avoiding divide-by-zero errors.  
+- **IF** (used in conditional KPIs) → For logic-based calculations (e.g., flagging performance trends).
+
+---
+
+### 🔹 Visuals & Reporting  
+- Interactive charts, KPIs, slicers, drill-through  
+- Insights: revenue, orders, distribution, trends  
+
+---
+
+### 🔹 Row-Level Security (RLS)
+To ensure **restricted access**, I implemented **Row-Level Security** in Power BI based on **regional managers**.
+- Roles: **Europe Manager**, **North America Manager** and **Pacific Managers**.
+- Each sees **only their region’s data**  
+- Restricted from unrelated visuals, tables, or model views.
+- **Power BI Security** provides **fine-grained control** over **data access** and **dashboard permissions**.
+
+---
+ 
 ## 🎯 Key Insights :
 - Revenue Growth: +212.14% (Jan 2020 → Jun 2022).
 - Strong Surge: +127.18% ($1M+) in 10 months (Aug 2021 → Jun 2022).
